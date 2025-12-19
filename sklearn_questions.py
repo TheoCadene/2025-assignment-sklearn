@@ -110,7 +110,9 @@ class KNearestNeighbors(ClassifierMixin, BaseEstimator):
         for i in range(X.shape[0]):
             k_nearest_indices = np.argsort(distances[i])[:self.n_neighbors]
             k_nearest_labels = self.y_train_[k_nearest_indices]
-            unique_labels, counts = np.unique(k_nearest_labels, return_counts=True)
+            unique_labels, counts = np.unique(
+                k_nearest_labels, return_counts=True
+            )
             y_pred[i] = unique_labels[np.argmax(counts)]
         return y_pred
 
